@@ -7,8 +7,11 @@ const searchBtn = () => {
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    if(data.data === null){
-      console.log('noo');
+    if(data.data.length === 0){
+      const getErr = document.getElementById('err');
+      getErr.classList.remove('d-none');
+      const getErrMsg = document.getElementById('err-msg');
+      getErrMsg.innerText = 'Data Not Found'
     }
     else if(searchField.value === ''){
       const getErr = document.getElementById('err');
@@ -22,6 +25,9 @@ const searchBtn = () => {
       const getErrMsg = document.getElementById('err-msg');
       getErrMsg.innerText = 'Phone name must be in String'
     }
+    // else if(){
+
+    // }
     else{
       displaySearch(data.data)
       const getErr = document.getElementById('err');
@@ -80,9 +86,8 @@ const phoneDetails = getPhoneInfo => {
     <div class="card" style="width: 18rem;">
       <img src="${getPhoneInfo.image}" class="card-img-top" alt="...">
       <div class="card-body">
+      <h5 class="card-title">Name: ${getPhoneInfo.name}</h5>
         <h5 class="card-title">${getPhoneInfo.releaseDate}</h5>
-        <h5 class="card-title">Brand: ${getPhoneInfo.brand}</h5>
-        <h5 class="card-title">Sensors: ${getPhoneInfo.brand}</h5>
       </div>
     </div>
   `;
