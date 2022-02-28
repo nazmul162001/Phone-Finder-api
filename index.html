@@ -27,16 +27,44 @@
         <div class="input-area">
           <nav class="navbar navbar-light">
             <div class="d-flex mx-auto w-50">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input id="search-field" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button onclick="searchBtn()" id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
             </div>
           </nav>
           <!-- err handling  -->
-          <div id="err" class="err-text">
-            <p class="text-center text-danger">Pleases input a valid information</p>
+          <div id="err" class="err-text d-none">
+            <p id="err-msg" class="text-center text-danger"> </p>
           </div>
         </div>
-      </div>
+      </div> <!--END Container / Input area-->
+
+
+      <!-- card Details section   -->
+      <section class="card-details my-5">
+        <div class="container">
+          <div id="card-details" class="row">
+
+          </div>
+        </div>
+      </section>
+
+      <!-- card section  -->
+      <section class="card-section">
+        <div class="container">
+          <div id="card-container" class="row mt-5">
+            <!-- <div class="col-lg-4 col-12 mb-4">
+              <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 
