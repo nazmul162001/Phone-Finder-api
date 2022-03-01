@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body{
   background-color: #171622;
+}
+.title-area h2{
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+}
+.title-area img{
+  width: 60px;
 }
 .card{
   border-radius: 20px;
@@ -16,5 +25,11 @@ body{
 @media only screen and (max-width: 720px){
   .input-box{
     width: 80% !important;
+  }
+  .title-area h2{
+    font-size: 35px;
+  }
+  .title-area img{
+    width: 40px;
   }
 } 
