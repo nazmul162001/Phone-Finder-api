@@ -89,6 +89,7 @@ const displaySearch = (getData) => {
   emptyInput('search-field')
   })
 }
+// Display details handler ///
 
 const detailsBtn = details => {
   console.log(details);

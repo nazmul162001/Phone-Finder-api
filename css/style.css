@@ -6,3 +6,9 @@
 .custom-card img{
   max-height: 500px;
 }
+
+@media only screen and (max-width: 720px){
+  .input-box{
+    width: 80% !important;
+  }
+} 
