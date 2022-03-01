@@ -19,11 +19,20 @@ const removeClass = err => {
   getErr.classList.remove('d-none');
 }
 
+// trigger button click on enter 
+const input = document.getElementById("search-field");
+input.addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+  document.getElementById("search-btn").click();
+  }
+});
 
 /////////////////// main work ///////////////////
 const searchBtn = () => {
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
+  removeClass('preloader');
   // get fetch 
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
 
@@ -32,12 +41,14 @@ const searchBtn = () => {
   .then(data => {
     if(searchField.value === ''){
       removeClass('err')
+      addClass('preloader')
       emptyInput('search-field');
       const getErrMsg = document.getElementById('err-msg');
       getErrMsg.innerText = '';
     }
     else if(data.data.length === 0){
       removeClass('err')
+      addClass('preloader')
       addClass('total-result')
       emptyInput('search-field');
       emptyCardContainer('card-container');
@@ -87,6 +98,7 @@ const displaySearch = (getData) => {
   `;
   getCardContainer.appendChild(div);
   emptyInput('search-field')
+  addClass('preloader')
   })
 }
 // Display details handler ///
