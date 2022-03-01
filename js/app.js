@@ -89,7 +89,7 @@ const phoneDetails = getPhoneInfo => {
   const cardDetail = document.getElementById('card-details');
   cardDetail.textContent = '';
   // distructuring 
-  const  {GPS,WLAN,NFC,Radio,USB} = getPhoneInfo.others;
+  // const  {GPS,WLAN,NFC,Radio,USB} = getPhoneInfo.others;
   const  {name,releaseDate,mainFeatures} = getPhoneInfo
 
   // get sensors 
@@ -112,12 +112,12 @@ const phoneDetails = getPhoneInfo => {
         <br> <span class="text-success fw-bold">Memory:</span> ${mainFeatures.memory}
         </p>
         <p class="card-title"><span class="fw-bold">Other Feature: </span> <br> 
-        <span class="text-success fw-bold">WLAN:</span> ${WLAN} <br>
-        <span class="text-success fw-bold">Bluetooth:</span> ${Bluetooth} <br>
-        <span class="text-success fw-bold">GPS:</span> ${GPS} <br>
-        <span class="text-success fw-bold">NFC:</span> ${NFC} <br>
-        <span class="text-success fw-bold">Radio:</span> ${Radio} <br>
-        <span class="text-success fw-bold">USB:</span> ${USB}
+        <span class="text-success fw-bold">WLAN:</span> ${getPhoneInfo.others ? getPhoneInfo.others.WLAN : 'no data found'} <br>
+        <span class="text-success fw-bold">Bluetooth:</span> ${getPhoneInfo.others ? getPhoneInfo.others.Bluetooth : 'no data found'} <br>
+        <span class="text-success fw-bold">GPS:</span> ${getPhoneInfo.others ? getPhoneInfo.others.GPS : 'no data found'} <br>
+        <span class="text-success fw-bold">NFC:</span> ${getPhoneInfo.others ? getPhoneInfo.others.NFC : 'no data found'} <br>
+        <span class="text-success fw-bold">Radio:</span> ${getPhoneInfo.others ? getPhoneInfo.others.Radio : 'no data found'} <br>
+        <span class="text-success fw-bold">USB:</span> ${getPhoneInfo.others ? getPhoneInfo.others.USB : 'no data found'}
         </p>
       </div>
     </div>
