@@ -1,3 +1,6 @@
+// common function for empty input field 
+const emptyInput = id => {document.getElementById(id).value = '';}
+
 const searchBtn = () => {
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
@@ -7,27 +10,20 @@ const searchBtn = () => {
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    if(data.data.length === 0){
+    if(searchField.value === ''){
       const getErr = document.getElementById('err');
       getErr.classList.remove('d-none');
       const getErrMsg = document.getElementById('err-msg');
-      getErrMsg.innerText = 'Data Not Found'
+      getErrMsg.innerText = 'Search Any Phone';
+      emptyInput('search-field');
     }
-    else if(searchField.value === ''){
+    else if(data.data.length === 0){
       const getErr = document.getElementById('err');
       getErr.classList.remove('d-none');
       const getErrMsg = document.getElementById('err-msg');
-      getErrMsg.innerText = 'Please Search any Phone'
+      getErrMsg.innerText = 'No data found';
+      emptyInput('search-field');
     }
-    else if(isNaN(searchField.value) === false){
-      const getErr = document.getElementById('err');
-      getErr.classList.remove('d-none');
-      const getErrMsg = document.getElementById('err-msg');
-      getErrMsg.innerText = 'Phone name must be in String'
-    }
-    // else if(){
-
-    // }
     else{
       displaySearch(data.data)
       const getErr = document.getElementById('err');
@@ -39,6 +35,7 @@ const searchBtn = () => {
 
 
 const displaySearch = (getData) => {
+  // condition  
   console.log(getData);
   const getCardContainer = document.getElementById('card-container');
   // empty previous result 
@@ -58,6 +55,7 @@ const displaySearch = (getData) => {
     </div>
   `;
   getCardContainer.appendChild(div);
+  emptyInput('search-field');
   })
 }
 
@@ -70,24 +68,41 @@ const detailsBtn = details => {
 }
 
 const phoneDetails = getPhoneInfo => {
-  // console.log(getPhoneInfo);
+  console.log(getPhoneInfo.name);
   const cardDetail = document.getElementById('card-details');
   // empty card 
   cardDetail.textContent = '';
+  // others
+  const myObject = `${getPhoneInfo.others}`
+  console.log(myObject);
+
   // get sensors 
-  // const arr = `${getPhoneInfo.sensors}`;
-  // arr.forEach(getInfo => {
-  //   console.log(getInfo);
-  // })
+  const arr = `${getPhoneInfo.mainFeatures.sensors}`;
+  const [sensors] = [arr];
 
   const div = document.createElement('div');
-  div.classList.add('col');
+  div.classList.add('col-12', 'd-flex', 'justify-content-center');
   div.innerHTML = `
-    <div class="card" style="width: 18rem;">
+    <div class="card custom-card" style="width: 40rem;">
       <img src="${getPhoneInfo.image}" class="card-img-top" alt="...">
       <div class="card-body">
-      <h5 class="card-title">Name: ${getPhoneInfo.name}</h5>
-        <h5 class="card-title">${getPhoneInfo.releaseDate}</h5>
+      <p class="card-title"><span class="fw-bold">Name: </span> ${getPhoneInfo.name}</p>
+        <p class="card-title"><span class="fw-bold">Release: </span> ${getPhoneInfo.releaseDate}</p>
+        <p class="card-title"> <span class="fw-bold">Sensors: </span> ${sensors}</p>
+        <p class="card-title"> <span class="fw-bold">Main Feature: 
+        </span> <br> <span class="text-success fw-bold">Storage:</span>  ${getPhoneInfo.mainFeatures.storage}
+        <br> <span class="text-success fw-bold">DisplaySize:</span> ${getPhoneInfo.mainFeatures.displaySize}
+        <br> <span class="text-success fw-bold">Chipset:</span> ${getPhoneInfo.mainFeatures.chipSet}
+        <br> <span class="text-success fw-bold">Memory:</span> ${getPhoneInfo.mainFeatures.memory}
+        </p>
+        <p class="card-title"><span class="fw-bold">Other Feature: </span> <br> 
+        <span class="text-success fw-bold">WLAN:</span> ${getPhoneInfo.others.WLAN} <br>
+        <span class="text-success fw-bold">Bluetooth:</span> ${getPhoneInfo.others.Bluetooth} <br>
+        <span class="text-success fw-bold">GPS:</span> ${getPhoneInfo.others.GPS} <br>
+        <span class="text-success fw-bold">NFC:</span> ${getPhoneInfo.others.NFC} <br>
+        <span class="text-success fw-bold">Radio:</span> ${getPhoneInfo.others.Radio} <br>
+        <span class="text-success fw-bold">USB:</span> ${getPhoneInfo.others.USB}
+        </p>
       </div>
     </div>
   `;
