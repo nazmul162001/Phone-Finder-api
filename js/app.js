@@ -38,8 +38,10 @@ const searchBtn = () => {
     }
     else if(data.data.length === 0){
       removeClass('err')
+      addClass('total-result')
       emptyInput('search-field');
       emptyCardContainer('card-container');
+      emptyCardContainer('card-details');
       const getErrMsg = document.getElementById('err-msg');
       getErrMsg.innerText = 'No data found';
     }
@@ -47,6 +49,7 @@ const searchBtn = () => {
       displaySearch(data.data)
       addClass('err')
       emptyCardContainer('card-details')
+      removeClass('total-result')
     }
   })
 }
@@ -57,7 +60,18 @@ const displaySearch = (getData) => {
   getCardContainer.textContent = '';
   // Slice Card container
   const totalResult = getData.slice(0,20);
-  // console.log(totalResult.length);
+
+  // display total result number 
+    const showTotalResult = document.getElementById('total-result');
+    showTotalResult.textContent = '';
+    const p = document.createElement('p');
+    p.classList.add('text-center', 'text-primary', 'fs-5')
+    p.innerHTML = `
+    Showing ${totalResult.length} result, total of ${getData.length} result 😊
+    `;
+    showTotalResult.appendChild(p);
+  // -------------------------------------------------- //
+
   totalResult.forEach(getSlice => {
     const div = document.createElement('div');
     div.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'col-12', 'mb-4');
