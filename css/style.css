@@ -1,5 +1,7 @@
 .card img{
   max-height: 300px;
+  width: 200px;
+  margin: auto;
 }
 .custom-card img{
   max-height: 500px;
