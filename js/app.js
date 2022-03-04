@@ -115,8 +115,8 @@ const phoneDetails = getPhoneInfo => {
   console.log(getPhoneInfo.name);
   const cardDetail = document.getElementById('card-details');
   cardDetail.textContent = '';
+  
   // distructuring 
-  // const  {GPS,WLAN,NFC,Radio,USB} = getPhoneInfo.others;
   const  {name,releaseDate,mainFeatures} = getPhoneInfo
 
   // get sensors 
