@@ -6,6 +6,7 @@ body{
 .title-area h2{
   font-family: 'Lobster', cursive;
   font-size: 50px;
+  text-shadow: 3px 3px rgb(141, 12, 12);
 }
 .title-area img{
   width: 60px;
@@ -18,8 +19,30 @@ body{
   width: 200px;
   margin: auto;
 }
+.custom-card{
+  width: 90%;
+  height: 90%;
+  position: fixed;
+  z-index: 1;
+  max-width: 640px;
+  max-height: 550px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  overflow-y: scroll;
+  background-image: linear-gradient(-20deg, rgb(163, 84, 173) , rgba(206, 204, 65, 0.527));
+}
 .custom-card img{
   max-height: 500px;
+}
+.icon{
+  width: 50px;
+  height: 50px;
+  top: 2%;
+  right: 0;
+  position: absolute;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 720px){
@@ -33,3 +56,34 @@ body{
     width: 40px;
   }
 } 
+
+@media only screen and (max-width: 767px){
+  .custom-card{
+    width: 80%;
+    height: 90%;
+    max-width: 400px;
+    max-height: 550px;
+  }
+  .custom-card img{
+    max-height: 200px;
+    max-width: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .custom-card{
+    width: 80%;
+    height: 90%;
+    max-width: 300px;
+  }
+  .custom-card img{
+    max-height: 150px;
+    max-width: 130px;
+  }
+}
+@media only screen and (max-width: 350px){
+  .custom-card{
+    width: 80%;
+    height: 90%;
+  }
+}

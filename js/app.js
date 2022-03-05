@@ -28,6 +28,7 @@ input.addEventListener("keyup", function(e) {
   }
 });
 
+
 /////////////////// main work ///////////////////
 const searchBtn = () => {
   const searchField = document.getElementById('search-field');
@@ -112,7 +113,7 @@ const detailsBtn = details => {
 }
 
 const phoneDetails = getPhoneInfo => {
-  console.log(getPhoneInfo.name);
+  // console.log(getPhoneInfo.name);
   const cardDetail = document.getElementById('card-details');
   cardDetail.textContent = '';
   
@@ -127,6 +128,7 @@ const phoneDetails = getPhoneInfo => {
   div.classList.add('col-12', 'd-flex', 'justify-content-center');
   div.innerHTML = `
     <div class="card custom-card pt-5" style="width: 40rem;">
+    <div onclick="closeBtn()" id="icon" class="icon"><i class="fas fa-times"></i></div>
       <img src="${getPhoneInfo.image}" class="card-img-top" alt="...">
       <div class="card-body">
       <p class="card-title"><span class="fw-bold">Name: </span> ${name}</p>
@@ -150,4 +152,9 @@ const phoneDetails = getPhoneInfo => {
     </div>
   `;
   cardDetail.appendChild(div);
+}
+
+// close btn 
+const closeBtn = ()=>{
+  emptyCardContainer('card-details');
 }
