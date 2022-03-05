@@ -32,6 +32,9 @@ body{
   overflow-y: scroll;
   background-image: linear-gradient(-20deg, rgb(163, 84, 173) , rgba(206, 204, 65, 0.527));
 }
+.custom-card::-webkit-scrollbar{
+  display: none;
+}
 .custom-card img{
   max-height: 500px;
 }
@@ -41,8 +44,9 @@ body{
   top: 2%;
   right: 0;
   position: absolute;
-  font-size: 30px;
+  font-size: 40px;
   cursor: pointer;
+  color: red;
 }
 
 @media only screen and (max-width: 720px){
